@@ -2,7 +2,7 @@ require 'json'
 
 Pod::Spec.new do |s|
   s.name         = "RNDateFormat"
-  s.version      = "1.1.17"
+  s.version      = "1.1.18"
   s.summary      = "RNDateFormat"
   s.description  = "Library for datetime format"
   s.homepage     = ""
