@@ -3,12 +3,22 @@
 
 @implementation RNDateFormat
 
+RCT_EXPORT_MODULE()
+
 - (dispatch_queue_t)methodQueue
 {
     return dispatch_get_main_queue();
 }
-RCT_EXPORT_MODULE()
 
++ (BOOL)requiresMainQueueSetup
+{
+    return YES;
+}
+
+- (instancetype)init {
+    self = [super init];
+    return self;
+}
 
 RCT_REMAP_METHOD(formateMillis,
                  millis:(NSString *)millis
