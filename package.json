@@ -1,6 +1,6 @@
 {
   "name": "react-native-date-format",
-  "version": "1.1.17",
+  "version": "1.1.18",
   "description": "Format dateTime using react native",
   "main": "index.js",
  
