@@ -1,0 +1,6 @@
+// @flow
+
+declare module.exports: {
+   formateMillis: () => Promise<string>,
+  formatDate: () => Promise<string>,
+};
