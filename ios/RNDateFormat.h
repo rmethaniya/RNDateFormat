@@ -5,6 +5,9 @@
 #import <React/RCTBridgeModule.h>
 #endif
 
+#import <React/RCTBridge.h>
+#import <React/RCTEventDispatcher.h>
+
 @interface RNDateFormat : NSObject <RCTBridgeModule>
 
 @end
