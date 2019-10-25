@@ -5,9 +5,6 @@
 
 `$ npm install react-native-date-format --save`
 
-> NOTE:
->
-> * This library works only in android.
 
 ### Mostly automatic installation
 
