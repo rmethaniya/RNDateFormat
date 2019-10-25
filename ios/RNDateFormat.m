@@ -23,8 +23,7 @@ RCT_EXPORT_MODULE()
 RCT_REMAP_METHOD(formateMillis,
                  millis:(NSString *)millis
                  requiredFormat:(NSString *)requiredFormat
-                 findEventsWithResolver:(RCTPromiseResolveBlock)resolve
-                 rejecter:(RCTPromiseRejectBlock)reject){
+                 callback:(RCTResponseSenderBlock)callback){
     @try {
         double timeStamp = [millis doubleValue];
         NSTimeInterval timeInterval=timeStamp/1000;
@@ -32,24 +31,20 @@ RCT_REMAP_METHOD(formateMillis,
         NSDateFormatter *dateformatter=[[NSDateFormatter alloc]init];
         [dateformatter setDateFormat:requiredFormat];
         NSString *dateString=[dateformatter stringFromDate:date];
-        resolve(dateString);
+      callback(@[dateString]);
     }
-    
     @catch ( NSException *e ) {
-        NSString *domain = @"";
-        NSDictionary *dic = @{ @"error" : e.description};
-        NSError *error = [NSError errorWithDomain:domain code:1000 userInfo:dic];
-        reject(@"", @"", error);
-
+        NSString *error = @"";
+        callback(@[error]);
     }
 }
+
 
 RCT_REMAP_METHOD(formatDate,
                  dateString:(NSString *)dateString
                  currentFormat:(NSString *)currentFormat
-                  requiredDateFormat:(NSString *)requiredDateFormat
-                 findEventsWithResolver:(RCTPromiseResolveBlock)resolve
-                 rejecter:(RCTPromiseRejectBlock)reject){
+                 requiredDateFormat:(NSString *)requiredDateFormat
+                 callback:(RCTResponseSenderBlock)callback){
     @try {
         NSDateFormatter* dateFormatter = [NSDateFormatter new];
         [dateFormatter setDateFormat:currentFormat];
@@ -58,15 +53,12 @@ RCT_REMAP_METHOD(formatDate,
         NSDateFormatter *formatter = [NSDateFormatter new];
         [formatter setDateFormat:requiredDateFormat];
         NSString *strDate = [formatter stringFromDate:date];
-        resolve(strDate);
+        callback(@[strDate]);
     }
     
     @catch ( NSException *e ) {
-        NSString *domain = @"";
-        NSDictionary *dic = @{ @"error" : e.description};
-        NSError *error = [NSError errorWithDomain:domain code:1000 userInfo:dic];
-        reject(@"", @"", error);
-        
+        NSString *error = @"";
+       callback(@[error]);
     }
 }
 
